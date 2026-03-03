@@ -14,7 +14,7 @@ Institution: UCLouvain – Earth and Life Institute
 
 ## DESCRIPTION
 
-Ce jeu de données contient les réponses à une enquête (aupres de la population Belge) afin d’identifier les facteurs influençant le choix de destination Erasmus.
+Ce dépôt contient les données et scripts associés à une enquête visant à identifier les destinations Erasmus les plus populaires et les facteurs influençant ces préférences.
 
 ### Question de recherche
 
@@ -29,20 +29,15 @@ Quels facteurs influencent le choix de destination Erasmus chez les étudiants ?
 
 ### Période de collecte
 
-Février 2026 - (Mars 2026)
+Du 16 février 2026 à 16h30 jusqu’au 27 février 2026 à 17h30.
 
 ### Population
 
-Population Belge (N = XXX)
+Échantillon composé principalement d'étudiants universitaires francophones (N = 170)
 
 ### Méthode de collecte
 
 Questionnaire en ligne diffusé via Microsoft Forms.
-
-## LIMITES
-
-- Échantillon non représentatif (biais universitaire + Brabant Wallon + Brabant Flamend)
-- Tous les facteurs culturels n’ont pas été pris en compte.
 
 ## STRUCTURE DES FICHIERS
 
@@ -64,27 +59,22 @@ Scripts permettant de reproduire le nettoyage, les analyses et les figures.
 `→ Graphiques utilisés dans le rapport final.`
 
 `metadata/`  
-`→ README.txt`  
 `→ data_dictionary.csv`  
 `→ LICENSE.txt`
 
 ## NETTOYAGE ET TRANSFORMATIONS
 
 - Suppression des réponses incomplètes
+- Recodage des réponses « Peut-être » en « Oui » pour l’analyse binaire
 - Codage des échelles de Likert (1 = Très peu → 5 = Très fort)
 
 ## REPRODUCTION DES ANALYSES
 
-1. Ouvrir le projet R
-2. Charger les données: `data_processed/enquete_erasmus_clean.csv`
-3. Exécuter les scripts dans le dossier `scripts/`
-4. Les figures sont automatiquement dans `figures/`
+Les analyses peuvent être reproduites en :
+1. Chargeant data_processed/enquete_erasmus_clean.csv
+2. Exécutant les scripts du dossier scripts/
+3. Les figures sont automatiquement générées dans le dossier figures/
 
-## FORMATS UTILISÉS
-
-- CSV (interopérable)
-- XXX (figures)
-- TXT (metadata)
 
 ## CONFORMITÉ RGPD
 
@@ -92,8 +82,8 @@ Aucune donnée personnelle identifiable n’est incluse.
 
 ## CITATION DU JEU DE DONNÉES
 
-Wautot L., Jamar Rodriguez N., Vanderlinden E., Damien L. (2026).  
-*Facteurs influençant le choix de destination Erasmus*. UCLouvain.
+Wautot L., Jamar Rodriguez N., Vanderlinden E., Damien L. (2026).
+Erasmus Survey Dataset. UCLouvain.
 
 ## License
 
