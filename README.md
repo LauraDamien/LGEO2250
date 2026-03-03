@@ -53,10 +53,9 @@ Données nettoyées utilisées pour l’analyse.
 `xx.R`  
 `xx.R`  
 `....`  
-Scripts permettant de reproduire le nettoyage, les analyses et les figures.
+Scripts permettant les analyses et les figures.
 
 `figures/`  
-`→ Graphiques utilisés dans le rapport final.`
 
 `metadata/`  
 `→ data_dictionary.csv`  
@@ -73,8 +72,7 @@ Scripts permettant de reproduire le nettoyage, les analyses et les figures.
 Les analyses peuvent être reproduites en :
 1. Chargeant data_processed/enquete_erasmus_clean.csv
 2. Exécutant les scripts du dossier scripts/
-3. Les figures sont automatiquement générées dans le dossier figures/
-
+3. Toutes les figures présentées sont générées automatiquement lors de l’exécution des scripts situés dans le dossier scripts/.
 
 ## CONFORMITÉ RGPD
 
