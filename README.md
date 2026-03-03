@@ -32,16 +32,12 @@ Export original du questionnaire (non modifié).
 Données nettoyées utilisées pour l’analyse.
 
 `scripts/`  
-`xx.R`  
-`xx.R`  
-`....`  
-Scripts permettant les analyses et les figures.
+`xx.R`    
+Scripts permettant les analyses et les figures. 
 
-`figures/`  
-
-`metadata/`  
-`→ data_dictionary.csv`  
-`→ LICENSE.txt`
+`metadata`  
+`data_dictionary.csv`  
+`LICENSE.txt`
 
 ## REPRODUCTION DES ANALYSES
 
