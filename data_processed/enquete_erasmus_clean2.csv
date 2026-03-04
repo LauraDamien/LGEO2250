@@ -1,0 +1,135 @@
+ID,genre,situation_academique,domaine_etude,a_deja_vecu_kot,region_domicile,classement_zone_preferee,destination_ideale,lien_destination
+"6,Homme,Master,""Sciences politiques, sociales, economiques, de communication"",Oui,Periurbaine,Europe occidentale,Rome,Non"
+7,Femme,Autre,Ingenieur civil / industriel,Oui,Rurale,Asie (centrale/ du Sud),Japon,Oui
+8,Homme,Master,Sciences,Oui,Periurbaine,Amerique latine,Chili,Non
+9,Femme,Bac,Droit,Oui,Periurbaine,Amerique latine,Colombie,Non
+"10,Femme,Bac,""Sciences politiques, sociales, economiques, de communication"",Oui,Urbaine,Amerique latine,Colombie ,Non"
+11,Homme,Master,Sciences,Oui,Rurale,Europe occidentale,,
+12,Homme,Master,Medecine / dentisterie / kinesiterapeute,Oui,Rurale,Europe occidentale,L'ile de la reunion ,Non
+13,Homme,Master,Sciences,Oui,Periurbaine,Amerique latine,,
+"14,Homme,Bac,""Sciences politiques, sociales, economiques, de communication"",Oui,Periurbaine,Europe occidentale,,"
+15,Homme,Bac,Ingenieur civil / industriel,Oui,Rurale,Scandinavie (Pays du nord de l'Europe),,
+16,Homme,Bac,Autre / Je ne suis pas concerne,Non,Rurale,Afrique du Nord,,
+18,Homme,Je ne suis plus aux etudes,Ingenieur civil / industriel,Oui,Urbaine,Oceanie,Australie,Non
+20,Femme,Je ne suis plus aux etudes,Droit,Oui,Urbaine,Amerique latine,Italie,Non
+22,Femme,Master,Medecine / dentisterie / kinesiterapeute,Oui,Urbaine,Oceanie,,
+23,Homme,Master,Sciences,Non,Periurbaine,Asie de l'Est,,
+24,Femme,Doctorat,Medecine / dentisterie / kinesiterapeute,Non,Urbaine,Amerique latine,Chili ,Non
+25,Homme,Master,Sciences,Oui,Urbaine,Amerique latine,,
+26,Homme,Master,Gestion (ingenieur),Oui,Urbaine,Asie (centrale/ du Sud),Inde,Non
+28,Femme,Je ne suis plus aux etudes,Medecine / dentisterie / kinesiterapeute,Non,Urbaine,Oceanie,,
+29,Homme,Master,Droit,Oui,Urbaine,Europe occidentale,,
+"30,Femme,Master,""Philosophie, arts et lettres"",Oui,Rurale,Amerique latine,,"
+31,Femme,Bac,Sciences,Oui,Urbaine,Scandinavie (Pays du nord de l'Europe),,
+32,Homme,Master,Sciences,Oui,Rurale,Scandinavie (Pays du nord de l'Europe),Oslo,Non
+33,Homme,Master,Sciences,Non,Periurbaine,Scandinavie (Pays du nord de l'Europe),,
+34,Homme,Je ne suis plus aux etudes,Sciences de l'education,Oui,Periurbaine,Amerique latine,Mexique ,Non
+"35,Femme,Master,""Sciences politiques, sociales, economiques, de communication"",Oui,Urbaine,Europe occidentale,France,Oui"
+36,Femme,Master,Autre / Je ne suis pas concerne,Non,Urbaine,Scandinavie (Pays du nord de l'Europe),Edimbourg,Non
+37,Femme,Master,Droit,Non,Periurbaine,Europe occidentale,,
+"38,Femme,Master,Autre / Je ne suis pas concerne,Oui,Urbaine,Europe occidentale,""Paris, FRANCE"",Oui"
+40,Homme,Bac,Ingenieur civil / industriel,Oui,Urbaine,Amerique du Nord (US et Canada),USA,Non
+41,Homme,Master,Sciences,Oui,Rurale,Scandinavie (Pays du nord de l'Europe),,
+42,Femme,Master,Sciences,Oui,Periurbaine,Scandinavie (Pays du nord de l'Europe),Danemark,Non
+"43,Homme,Je ne suis plus aux etudes,""Sciences politiques, sociales, economiques, de communication"",Oui,Urbaine,Europe occidentale,,"
+44,Homme,Bac,Autre / Je ne suis pas concerne,Non,Urbaine,Asie de l'Est,Japon - Canada - Royaume-Uni,Oui
+45,Homme,Master,Psychologie,Oui,Periurbaine,Europe occidentale,Padoue,Oui
+"46,Homme,Je ne suis plus aux etudes,""Sciences politiques, sociales, economiques, de communication"",Oui,Rurale,Europe occidentale,Italie,Oui"
+47,Homme,Je ne suis plus aux etudes,Informatique,Oui,Rurale,Oceanie,,
+"48,Homme,Je ne suis plus aux etudes,""Sciences politiques, sociales, economiques, de communication"",Oui,Urbaine,Scandinavie (Pays du nord de l'Europe),,"
+49,Homme,Bac,Ingenieur civil / industriel,Non,Periurbaine,Europe de l'Est,,
+50,Homme,Master,Gestion (ingenieur),Oui,Urbaine,Amerique latine,,
+51,Homme,Je ne suis plus aux etudes,Informatique,Oui,Urbaine,Scandinavie (Pays du nord de l'Europe),,
+"52,Homme,Bac,""Sciences politiques, sociales, economiques, de communication"",Non,Periurbaine,Amerique du Nord (US et Canada),,"
+53,Homme,Master,Sciences,Oui,Rurale,Scandinavie (Pays du nord de l'Europe),,
+"54,Homme,Master,""Sciences politiques, sociales, economiques, de communication"",Oui,Urbaine,Europe occidentale,,"
+55,Femme,Bac,Autre / Je ne suis pas concerne,Non,Rurale,Asie de l'Est,Shanghai,Oui
+"56,Homme,Je ne suis plus aux etudes,Ingenieur civil / industriel,Oui,Urbaine,Scandinavie (Pays du nord de l'Europe),""Su?de, Norv?ge"",Non"
+58,Femme,Master,Sciences,Oui,Urbaine,Oceanie,nouvelle zelande,Non
+60,Homme,Je ne suis plus aux etudes,Autre / Je ne suis pas concerne,Oui,Periurbaine,Oceanie,Australie,Non
+61,Homme,Master,Sciences,Oui,Periurbaine,Amerique du Nord (US et Canada),,
+62,Femme,Je ne suis plus aux etudes,Sciences de la sante (Medecine / dentisterie / kinesiterapeute / ...),Non,Urbaine,Amerique du Nord (US et Canada),,
+63,Homme,Doctorat,Ingenieur civil / industriel,Non,Urbaine,Amerique du Nord (US et Canada),,
+64,Femme,Bac,Sciences de l'education,Non,Urbaine,Oceanie,,
+"65,Homme,Master,""Sciences politiques, sociales, economiques, de communication"",Oui,Periurbaine,Scandinavie (Pays du nord de l'Europe),,"
+66,Homme,Doctorat,Sciences,Non,Periurbaine,Oceanie,Australie ,Non
+67,Femme,Secondaires,Autre / Je ne suis pas concerne,Non,Urbaine,Asie de l'Est,Singapore,Non
+68,Homme,Master,Sciences de l'education,Non,Urbaine,Asie de l'Est,,
+69,Homme,Bac,Sciences de l'education,Non,Periurbaine,Amerique du Nord (US et Canada),,
+"70,Homme,Secondaires,""Sciences politiques, sociales, economiques, de communication"",Non,Periurbaine,Scandinavie (Pays du nord de l'Europe),Australie,Oui"
+"71,Femme,Master,""Sciences politiques, sociales, economiques, de communication"",Oui,Urbaine,Amerique latine,Bresil ou Colombie ,Oui"
+73,Femme,Je ne suis plus aux etudes,Autre / Je ne suis pas concerne,Oui,Rurale,Amerique latine,,
+"76,Femme,Master,""Sciences politiques, sociales, economiques, de communication"",Oui,Periurbaine,Europe occidentale,,"
+78,Homme,Bac,Sciences,Non,Urbaine,Oceanie,,
+79,Homme,Je ne suis plus aux etudes,Informatique,Non,Periurbaine,Europe occidentale,,
+80,Homme,Je ne suis plus aux etudes,Sciences de l'education,Non,Urbaine,Scandinavie (Pays du nord de l'Europe),,
+82,Femme,Bac,Autre / Je ne suis pas concerne,Oui,Periurbaine,Europe occidentale,,
+83,Homme,Bac,Sciences,Oui,Rurale,Scandinavie (Pays du nord de l'Europe),Oslo,Non
+"84,Femme,Je ne suis plus aux etudes,""Sciences politiques, sociales, economiques, de communication"",Non,Rurale,Scandinavie (Pays du nord de l'Europe),,"
+"85,Femme,Secondaires,""Sciences politiques, sociales, economiques, de communication"",Non,Rurale,Asie de l'Est,,"
+86,Homme,Je ne suis plus aux etudes,Ingenieur civil / industriel,Oui,Urbaine,Asie de l'Est,,
+87,Homme,Master,Sciences,Non,Urbaine,Oceanie,Valencia,Non
+90,Homme,Master,Ingenieur civil / industriel,Oui,Urbaine,Europe de l'Est,Afrique du sud,Oui
+93,Femme,Je ne suis plus aux etudes,Sciences de la sante (Medecine / dentisterie / kinesiterapeute / ...),Oui,Urbaine,Amerique du Nord (US et Canada),,
+94,Femme,Je ne suis plus aux etudes,Sciences,Oui,Urbaine,Oceanie,,
+95,Homme,Master,Psychologie,Oui,Periurbaine,Asie (centrale/ du Sud),,
+99,Femme,Master,Sciences de la sante (Medecine / dentisterie / kinesiterapeute / ...),Oui,Urbaine,Scandinavie (Pays du nord de l'Europe),,
+102,Homme,Je ne suis plus aux etudes,Ingenieur civil / industriel,Oui,Urbaine,Scandinavie (Pays du nord de l'Europe),,
+105,Femme,Secondaires,Autre / Je ne suis pas concerne,Non,Periurbaine,Oceanie,,
+106,Homme,Je ne suis plus aux etudes,Ingenieur civil / industriel,Oui,Periurbaine,Amerique latine,Argentine,Non
+"109,Femme,Master,""Philosophie, arts et lettres"",Oui,Urbaine,Europe occidentale,,"
+110,Femme,Bac,Gestion (ingenieur),Non,Periurbaine,Asie de l'Est,Coree du Sud et Japon ,Non
+"111,Femme,Je ne suis plus aux etudes,""Sciences politiques, sociales, economiques, de communication"",Oui,Periurbaine,Amerique latine,,"
+112,Homme,Je ne suis plus aux etudes,Gestion (ingenieur),Oui,Urbaine,Amerique latine,,
+113,Femme,Je ne suis plus aux etudes,Sciences,Oui,Urbaine,Oceanie,,
+116,Homme,Master,Sciences,Oui,Periurbaine,Scandinavie (Pays du nord de l'Europe),,
+117,Femme,Je ne suis plus aux etudes,Psychologie,Oui,Urbaine,Amerique latine,,
+118,Homme,Bac,Droit,Oui,Rurale,Amerique latine,equateur ,Oui
+119,Homme,Master,Droit,Oui,Periurbaine,Amerique du Nord (US et Canada),,
+120,Homme,Master,Ingenieur civil / industriel,Oui,Urbaine,Asie (centrale/ du Sud),Mexique ,Oui
+122,Femme,Je ne suis plus aux etudes,Autre / Je ne suis pas concerne,Non,Periurbaine,Europe occidentale,,
+124,Homme,Secondaires,Autre / Je ne suis pas concerne,Non,Urbaine,Europe occidentale,,
+126,Femme,Je ne suis plus aux etudes,Sciences de l'education,Oui,Periurbaine,Amerique du Nord (US et Canada),,
+127,Homme,Je ne suis plus aux etudes,Gestion (ingenieur),Oui,Urbaine,Amerique latine,,
+128,Homme,Master,Ingenieur civil / industriel,Oui,Urbaine,Amerique du Nord (US et Canada),,
+129,Homme,Bac,Informatique,Oui,Rurale,Asie de l'Est,,
+"130,Homme,Je ne suis plus aux etudes,""Sciences politiques, sociales, economiques, de communication"",Oui,Urbaine,Oceanie,Vienne,Oui"
+131,Homme,Doctorat,Sciences,Oui,Periurbaine,Amerique du Nord (US et Canada),Montreal o? Vancouver,Oui
+132,Homme,Master,Sciences,Oui,Periurbaine,Asie de l'Est,Japon,Oui
+133,Homme,Je ne suis plus aux etudes,Ingenieur civil / industriel,Non,Urbaine,Europe occidentale,,
+"135,Femme,Master,""Sciences politiques, sociales, economiques, de communication"",Oui,Urbaine,Amerique latine,Royaume-Uni ,Oui"
+"136,Femme,Bac,""Sciences politiques, sociales, economiques, de communication"",Oui,Urbaine,Europe occidentale,,"
+137,Femme,Je ne suis plus aux etudes,Droit,Oui,Urbaine,Amerique latine,,
+"138,Homme,Je ne suis plus aux etudes,""Sciences politiques, sociales, economiques, de communication"",Oui,Periurbaine,Amerique latine,Argentine,Oui"
+139,Homme,Bac,Ingenieur civil / industriel,Non,Periurbaine,Scandinavie (Pays du nord de l'Europe),Canada,Non
+140,Homme,Master,Ingenieur civil / industriel,Oui,Periurbaine,Amerique du Nord (US et Canada),,
+141,Homme,Bac,Informatique,Oui,Urbaine,Amerique du Nord (US et Canada),Australie,Non
+142,Homme,Master,Ingenieur civil / industriel,Oui,Periurbaine,Scandinavie (Pays du nord de l'Europe),Trondheim,Non
+144,Femme,Master,Sciences,Non,Rurale,Amerique latine,,
+145,Femme,Je ne suis plus aux etudes,Autre / Je ne suis pas concerne,Oui,Urbaine,Scandinavie (Pays du nord de l'Europe),Norv?ge ,Non
+146,Homme,Master,Gestion (ingenieur),Oui,Urbaine,Asie (centrale/ du Sud),,
+147,Femme,Doctorat,Sciences,Oui,Rurale,Amerique latine,Argentine ,Non
+148,Femme,Master,Droit,Oui,Rurale,Amerique latine,,
+149,Homme,Master,Sciences,Oui,Rurale,Amerique latine,Rio,Non
+151,Homme,Bac,Sciences,Non,Urbaine,Amerique du Nord (US et Canada),Canada,Oui
+152,Femme,Master,Sciences de la sante (Medecine / dentisterie / kinesiterapeute / ...),Oui,Periurbaine,Amerique latine,Chili,Oui
+"153,Femme,Master,""Philosophie, arts et lettres"",Oui,Rurale,Asie de l'Est,,"
+154,Homme,Master,Droit,Oui,Urbaine,Amerique du Nord (US et Canada),Chili,Oui
+155,Femme,Je ne suis plus aux etudes,Autre / Je ne suis pas concerne,Oui,Rurale,Asie (centrale/ du Sud),,
+156,Homme,Bac,Sciences,Oui,Periurbaine,Scandinavie (Pays du nord de l'Europe),Norv?ge,Oui
+"157,Femme,Master,""Sciences politiques, sociales, economiques, de communication"",Oui,Periurbaine,Amerique latine,Bresil,Oui"
+158,Homme,Master,Sciences,Oui,Periurbaine,Afrique Sub-Saharienne,,
+"159,Femme,Bac,""Philosophie, arts et lettres"",Oui,Rurale,Europe occidentale,Espagne,Oui"
+160,Homme,Master,Ingenieur civil / industriel,Oui,Urbaine,Amerique latine,,
+161,Homme,Master,Ingenieur agronomique?,Oui,Periurbaine,Scandinavie (Pays du nord de l'Europe),Canada,Oui
+"163,Femme,Bac,""Philosophie, arts et lettres"",Oui,Urbaine,Amerique latine,Mexico City,Non"
+164,Homme,Bac,Informatique,Non,Periurbaine,Europe occidentale,Londres,Oui
+"165,Homme,Bac,Sciences,Non,Periurbaine,Scandinavie (Pays du nord de l'Europe),""Danemark,Canada"",Oui"
+166,Homme,Doctorat,Sciences,Oui,Urbaine,Scandinavie (Pays du nord de l'Europe),Finlande,Oui
+167,Homme,Bac,Ingenieur civil / industriel,Oui,Periurbaine,Asie (centrale/ du Sud),,
+"168,Homme,Master,""Sciences politiques, sociales, economiques, de communication"",Oui,Urbaine,Europe occidentale,,"
+169,Homme,Master,Ingenieur civil / industriel,Oui,Urbaine,Amerique latine,Mexique,Non
+170,Homme,Bac,Sciences,Non,Periurbaine,Scandinavie (Pays du nord de l'Europe),,
+172,Femme,Je ne suis plus aux etudes,Sciences de l'education,Non,Periurbaine,Afrique Sub-Saharienne,,
+"174,Homme,Je ne suis plus aux etudes,""Sciences politiques, sociales, economiques, de communication"",Oui,Rurale,Asie de l'Est,,"
+175,Homme,Bac,Ingenieur civil / industriel,Oui,Periurbaine,Scandinavie (Pays du nord de l'Europe),Su?de,Non

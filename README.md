@@ -28,11 +28,12 @@ Quels facteurs influencent le choix de destination Erasmus chez les étudiants ?
 Export original du questionnaire (non modifié).
 
 `data_processed/`  
-`→ enquete_erasmus_clean.csv`  
+`→ enquete_erasmus_clean.csv` 
+`→ enquete_erasmus_clean2.csv`  
 Données nettoyées utilisées pour l’analyse.
 
 `scripts/`  
-`xx.R`    
+`script_Erasmus.qmd`    
 Scripts permettant les analyses et les figures. 
 
 `metadata`  
@@ -42,7 +43,7 @@ Scripts permettant les analyses et les figures.
 ## REPRODUCTION DES ANALYSES
 
 Les analyses peuvent être reproduites en :
-1. Chargeant data_processed/enquete_erasmus_clean.csv
+1. Chargeant data_processed/enquete_erasmus_clean.csv et data_processed/enquete_erasmus_clean2.csv
 2. Exécutant les scripts du dossier scripts/
 3. Toutes les figures présentées sont générées automatiquement lors de l’exécution des scripts situés dans le dossier scripts/.
 

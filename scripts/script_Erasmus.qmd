@@ -1,0 +1,632 @@
+---
+title: "Analyses stat mesures de terrain"
+author: "Groupe Erasmus"
+format: html
+editor: visual
+---
+
+```{r}
+setwd("Z:/Documents/master 2/mesures de terrain")
+```
+
+```{r}
+install.packages("janitor")
+```
+
+```{r}
+
+library(readxl)
+library(dplyr)
+library(janitor)
+library(ggplot2)
+library(tidyr); 
+library(stringr)
+library(scales)
+
+```
+
+```{r}
+df <- read_csv("enquete_erasmus_clean.csv")
+ 
+
+```
+
+# Recréer des variables propres (oui/non Erasmus, kot, urbain...)
+
+```{r}
+
+## transformer en facteur 
+
+# Maintenant créer df2
+df2 <- df |> 
+  transmute(
+    genre = factor(genre),
+    situation_academique = factor(situation_academique),
+    domaine_etude = factor(domaine_etude),
+    	a_deja_vecu_kot = factor(	a_deja_vecu_kot),  
+    region_domicile = factor(region_domicile),
+    intention_erasmus = factor(intention_erasmus,
+                     levels = c("Non", "Peut-être", "Oui")) ) |> 
+  # Ajouter la binaire pour analyses
+  mutate(
+    erasmus_oui = case_when(
+      intention_erasmus %in% c("Oui", "Peut-être") ~ "Oui",
+      intention_erasmus == "Non" ~ "Non",
+      TRUE ~ NA_character_
+    ),
+    erasmus_oui = factor(erasmus_oui)
+  )
+
+# Vérifier
+head(df2)
+table(df2$erasmus_oui)
+
+```
+
+135 (= oui et peut-être) personnes souhaitent partir en erasmus et 35 non
+
+# Profil des répondants
+
+## Situation académique VS partir en erasmus oui/non
+
+```{r}
+
+table(df2$situation_academique)
+
+# Tableau croisé avec proportions par ligne (par domaine)
+prop.table(table(df2$situation_academique, df2$erasmus_oui), margin = 1) * 100
+
+
+# Graphique des effectifs par domaine
+f <- ggplot(df2, aes(x = situation_academique)) +
+  geom_bar(fill = "steelblue") +
+  coord_flip() +
+  labs(title = "Nombre de réponses par domaine", y = "Nombre de personnes")
+
+# Puis sauvegarder
+ggsave("nbr_rep_par_situation.png", plot = f, width = 10, height = 6, dpi = 300)
+
+```
+
+```{r}
+table(df2$situation_academique, df2$erasmus_oui)
+chisq.test(table(df2$situation_academique, df2$erasmus_oui))
+```
+
+```{r}
+ g <- ggplot(df2, aes(x = situation_academique, fill = erasmus_oui)) +
+  geom_bar(position = "fill") +  # "fill" = proportions à 100%
+  coord_flip() +
+  labs(title = "Proportion de personnes souhaitant partir en Erasmus ou non suivant la situation académique",
+       y = "Proportion", fill = "Souhaite partir") +
+  theme_minimal()
+
+ggsave("choix_erasmus_situation.png", plot = g, width = 10, height = 6, dpi = 300)
+```
+
+## Analyse domaine d'étude Vs partir oui/ non en erasmus
+
+```{r}
+# Nombre de personnes par domaine
+table(df2$domaine_etude)
+
+# Tableau croisé avec proportions par ligne (par domaine)
+prop.table(table(df2$domaine_etude, df2$erasmus_oui), margin = 1) * 100
+
+
+# Graphique des effectifs par domaine
+a <- ggplot(df2, aes(x = domaine_etude)) +
+  geom_bar(fill = "steelblue") +
+  coord_flip() +
+  labs(title = "Nombre de réponses par domaine", y = "Nombre de personnes")
+
+# Puis sauvegarder
+ggsave("nbr_rep_par_domaine.png", plot = a, width = 10, height = 6, dpi = 300)
+
+```
+
+```{r}
+# Exemple : Domaine et Erasmus 
+# voir si la répartition est significative (p-value < 0.05 = le domaine influence vraiment le choix Erasmus, pas par hasard).
+table(df2$domaine_etude, df2$erasmus_oui)
+chisq.test(table(df2$domaine_etude, df2$erasmus_oui)) #  p-value = 0.01571 --> le domaine influence vrmt le choix de destination
+
+
+```
+
+```{r}
+b <- ggplot(df2, aes(x = domaine_etude, fill = erasmus_oui)) +
+  geom_bar(position = "fill") +  # "fill" = proportions à 100%
+  coord_flip() +
+  labs(title = "Proportion de personnes souhaitant partir en Erasmus ou non par domaine",
+       y = "Proportion", fill = "Souhaite partir") +
+  theme_minimal()
+
+ggsave("choix_erasmus_par_domaine.png", plot = b, width = 10, height = 6, dpi = 300)
+
+```
+
+## Analyses vivre en kot Vs partir oui/ non en erasmus
+
+```{r}
+
+table(df2$a_deja_vecu_kot)
+
+# Tableau croisé avec proportions par ligne (par kot)
+prop.table(table(df2$a_deja_vecu_kot, df2$erasmus_oui), margin = 1) * 100
+
+
+# Graphique des effectifs par kot
+ ggplot(df2, aes(x = a_deja_vecu_kot)) +
+  geom_bar(fill = "steelblue") +
+  coord_flip() +
+  labs(title = "Nombre de personnes ayant vécu en kot/studio", y = "Nombre de personnes")
+
+```
+
+```{r}
+# voir si la répartition est significative (p-value < 0.05 = le kot influence vraiment le choix Erasmus, pas par hasard).
+table(df2$a_deja_vecu_kot, df2$erasmus_oui)
+chisq.test(table(df2$a_deja_vecu_kot, df2$erasmus_oui)) 
+
+```
+
+```{r}
+ c <- ggplot(df2, aes(x = a_deja_vecu_kot, fill = erasmus_oui)) +
+  geom_bar(position = "fill") +  # "fill" = proportions à 100%
+  coord_flip() +
+  labs(title = "Proportion de personnes souhaitant partir en Erasmus ou non ayant vécu en kot/studio ",
+       y = "Proportion", fill = "Souhaite partir") +
+  theme_minimal()
+
+ggsave("kot_partir.png", plot = c, width = 10, height = 6, dpi = 300)
+```
+
+## Localisation du domicile (urbain-rural) VS partir en erasmus
+
+```{r}
+
+table(df2$region_domicile)
+
+# Tableau croisé avec proportions par ligne (localisation domicile)
+prop.table(table(df2$region_domicile, df2$erasmus_oui), margin = 1) * 100
+
+
+# Graphique des effectifs par localisation domicile
+ ggplot(df2, aes(x = region_domicile)) +
+  geom_bar(fill = "steelblue") +
+  coord_flip() +
+  labs(title = "Nombre de personnes ayant vécu en kot/studio", y = "Nombre de personnes")
+```
+
+```{r}
+table(df2$region_domicile, df2$erasmus_oui)
+chisq.test(table(df2$region_domicile, df2$erasmus_oui)) 
+
+```
+
+```{r}
+ d <- ggplot(df2, aes(x = region_domicile, fill = erasmus_oui)) +
+  geom_bar(position = "fill") +  # "fill" = proportions à 100%
+  coord_flip() +
+  labs(title = "Proportion de personnes souhaitant partir en Erasmus ou non suivant leur habitat principal ",
+       y = "Proportion", fill = "Souhaite partir") +
+  theme_minimal()
+
+ggsave("domicile_erasmus.png", plot = d, width = 10, height = 6, dpi = 300)
+```
+
+## Genre VS erasmus oui/non
+
+```{r}
+table(df2$genre)
+
+# Tableau croisé avec proportions par ligne (par kot)
+prop.table(table(df2$genre, df2$erasmus_oui), margin = 1) * 100
+
+
+# Graphique des effectifs par kot
+ ggplot(df2, aes(x = genre)) +
+  geom_bar(fill = "steelblue") +
+  coord_flip() +
+  labs(title = "nombre de personnes par genre ayant répondus", y = "Nombre de personnes")
+```
+
+```{r}
+table(df2$genre, df2$erasmus_oui)
+chisq.test(table(df2$genre, df2$erasmus_oui)) 
+```
+
+```{r}
+e <- ggplot(df2, aes(x = genre, fill = erasmus_oui)) +
+  geom_bar(position = "fill") +  
+  coord_flip() +
+  labs(title = "Proportion de personnes souhaitant partir en Erasmus ou non suivant leur genre ",
+       y = "Proportion", fill = "Souhaite partir") +
+  theme_minimal()
+
+ggsave("genre_erasmus.png", plot = e, width = 10, height = 6, dpi = 300)
+```
+
+## Destination favorite
+
+```{r}
+df <- read_csv("enquete_erasmus_clean2.csv")
+
+library(dplyr)
+library(tidyr)
+library(readr)
+
+df_long <- df %>%
+  pivot_longer(cols = classement_zone_preferee,
+               names_to = "rang",
+               values_to = "destination_ideale") %>%
+  filter(!is.na(destination_ideale)) %>%
+  mutate(
+    rang = parse_number(rang),
+    points = 11 - rang
+  )
+
+df_long <- df_long %>%
+  mutate(
+    rang = as.numeric(rang),
+    points = 11 - rang
+  )
+
+classement <- df_long %>%
+  group_by(destination_ideale) %>%
+  summarise(score_total = sum(points)) %>%
+  arrange(desc(score_total))
+
+unique(df_long$rang)
+print(classement)
+```
+
+```{r}
+df2 <- read.csv("enquete_erasmus_clean.csv")
+library(ggplot2)
+
+# Domaine d'étude
+ggplot(df2, aes(x = domaine_etude, fill = classement_zone_preferee)) +
+  geom_bar() +
+  ylab("Nombre de répondants") +
+  labs(title = "Destination préférée selon le domaine d'étude") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+table_domaine <- table(df2$domaine_etude, df2$classement_zone_preferee)
+test_fisherD <- fisher.test(table_domaine, simulate.p.value = TRUE, B = 10000)
+test_fisherD
+
+
+# Genre
+ggplot(df2, aes(x = genre, fill = classement_zone_preferee)) +
+  geom_bar() +
+  ylab("Nombre de répondants") +
+  labs(title = "Destination préférée selon le genre") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+table_genre <- table(df2$genre, df2$classement_zone_preferee)
+test_fisherG <- fisher.test(table_genre, simulate.p.value = TRUE, B = 10000)
+test_fisherG
+
+
+# Situation académique
+ggplot(df2, aes(x = situation_academique, fill = classement_zone_preferee)) +
+  geom_bar() +
+  ylab("Nombre de répondants") +
+  labs(title = "Destination préférée selon la situation académique") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+table_situation <- table(df2$situation_academique, df2$classement_zone_preferee)
+test_fisherS <- fisher.test(table_situation, simulate.p.value = TRUE, B = 10000)
+test_fisherS
+
+
+# Expérience de logement
+ggplot(df2, aes(x = a_deja_vecu_kot, fill = classement_zone_preferee)) +
+  geom_bar() +
+  ylab("Nombre de répondants") +
+  labs(title = "Destination préférée selon l'expérience de logement") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+table_kot <- table(df2$a_deja_vecu_kot, df2$classement_zone_preferee)
+test_fisherK <- fisher.test(table_kot, simulate.p.value = TRUE, B = 10000)
+test_fisherK
+
+
+# Région d'origine
+ggplot(df2, aes(x = region_domicile, fill = classement_zone_preferee)) +
+  geom_bar() +
+  ylab("Nombre de répondants") +
+  labs(title = "Destination préférée selon la région de domicile") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+table_region <- table(df2$region_domicile, df2$classement_zone_preferee)
+test_fisherR <- fisher.test(table_region, simulate.p.value = TRUE, B = 10000)
+test_fisherR
+
+table_cont <- table(df2$domaine_etude,
+                    df2$classement_zone_preferee)
+# Test du chi²
+
+test_chi2 <- chisq.test(table_cont)
+test_chi2
+test_chi2$expected
+fisher.test(table_cont)
+
+sum(test_chi2$expected < 5)
+
+fisher.test(table_cont, simulate.p.value = TRUE, B = 10000)
+
+library(rcompanion)
+cramerV(table_cont)
+```
+
+```{r}
+#Destinations favorites
+pays <- c(
+  "Italie", "Japon", "Chili", "Colombie", "Réunion", "Australie", "Inde", "Norvège",
+  "Mexique", "France", "Royaume-Uni", "USA", "Danemark", "Chine", "Suède", "Nouvelle-Zélande", "Singapour",
+  "Brésil", "Espagne", "Afrique du Sud", "Argentine", "Corée du Sud", "Equateur",
+  "Autriche", "Canada", "Finlande"
+)
+
+frequence <- c(
+  4, 3, 4, 2, 1, 4, 1, 4,
+  4, 2, 3, 1, 2, 1, 2, 1, 1,
+  3, 2, 1, 3, 1, 1, 1, 4, 1
+)
+
+# Création d'un data frame
+df3 <- data.frame(destination_ideale = pays, Frequence = frequence)
+
+# Graphique horizontal avec ggplot2
+ggplot(df3, aes(x = reorder(destination_ideale, Frequence), y = Frequence)) +
+  geom_bar(stat = "identity", fill = "orange") +
+  coord_flip() +  # Pour inverser l'axe et avoir le plus cité en haut
+  labs(title = "Fréquence de citation de chaque pays",
+       x = "Pays",
+       y = "Nombre de fois cité") +
+  theme_minimal()
+```
+
+## Raisons Erasmus NON; Facteurs influancant la destinationx
+
+Labélisation des facteurs
+
+```{r}
+labels_facteur <- c(
+  budget="Le budget", barriere_langue="La barrière de la langue",
+  loin_famille="Être loin de la famille", relation_amoureuse="Relation amoureuse",
+  climat="Climat (météo)", culture="Différente culture",
+  alimentation="Différente alimentation", confort="Le confort",
+  craintes_sociales="Craintes sociales",
+  organisation="Organisation (trouver les cours, logement,...)"
+)
+likert_levels <- c("Très peu","Peu","Modérément","Fort","Très fort")
+likert_cols <- c("Très peu"="#D55E00","Peu"="#F4A582","Modérément"="#D9D9D9","Fort"="#92C5DE","Très fort"="#2166AC")
+
+labels_importance <- c(
+  culture_locale = "Culture locale",
+  langue_locale = "Langue locale",
+  prestige_universites = "Prestige des universités",
+  offre_universites = "Offre des universités",
+  distance_origine = "Distance par rapport à l’université d’origine",
+  politique_pays = "Politique du pays",
+  cout_vie = "Coût de la vie sur place",
+  richesse_pays = "Niveau de richesse du pays",
+  climat_destination = "Climat (météo)",
+  agencement_villes = "Agencement des villes (piétonnier/transports)",
+  impact_climatique_trajet = "Impact climatique du trajet (avion, train,...)",
+  subside = "Subside (bourse d’échange)",
+  aide_topup_ecoresponsable = "Aide top-up écoresponsable",
+  securite = "Sécurité de la vie sur place"
+)
+ 
+#Colonnes facteur_
+facteurs_cols <- names(select(df, starts_with("facteur_")))
+long <- df %>%
+  filter(if_any(all_of(facteurs_cols), ~ !is.na(.))) %>%
+  select(all_of(facteurs_cols)) %>%
+  mutate(across(everything(), ~na_if(str_squish(.), ""))) %>%
+  pivot_longer(everything(), names_to="facteur", values_to="reponse") %>%
+  filter(!is.na(reponse)) %>%
+  mutate(
+    facteur = str_remove(facteur, "^facteur_"),
+    reponse = factor(reponse, levels=likert_levels, ordered=TRUE)
+  )
+
+#Colonnes importance_
+imp_cols <- names(select(df, starts_with("importance_")))
+brut_pos <- df %>% filter(if_any(all_of(imp_cols), ~ !is.na(.)))
+long_imp <- brut_pos %>%
+  select(all_of(imp_cols)) %>%
+  mutate(across(everything(), ~na_if(str_squish(.), ""))) %>%
+  pivot_longer(everything(), names_to="importance", values_to="reponse") %>%
+  filter(!is.na(reponse)) %>%
+  mutate(
+    reponse = factor(reponse, levels=likert_levels, ordered=TRUE),
+    importance = str_remove(importance, "^importance_")
+  )
+```
+
+Statistiques des facteurs qui influencent le choix de ne pas faire un Erasmus
+
+```{r}
+#Stats 
+stats <- long %>%
+  mutate(score = as.integer(reponse)) %>%
+  group_by(facteur) %>%
+  summarise(
+    n=n(),
+    top2 = mean(score>=4)*100,
+    bottom2 = mean(score<=2)*100,
+    net = top2-bottom2,
+    mean_score=mean(score),
+    median_score=median(score),
+    .groups="drop"
+  ) %>% arrange(desc(top2))
+```
+
+Plot des facteurs
+
+```{r}
+#Figure 1 : Fort + Très fort
+stats_plot <- stats %>% mutate(facteur_label = recode(facteur, !!!labels_facteur))
+ 
+ggplot(stats_plot, aes(x=reorder(facteur_label, top2), y=top2)) +
+  geom_col() + coord_flip() +
+  geom_text(aes(label=sprintf("%.1f%%", top2)), hjust=-0.1, size=3.5) +
+  scale_y_continuous(limits=c(0,100), labels=percent_format(scale=1)) +
+  labs(title="Freins au départ en échange (Fort + Très fort)", x=NULL, y="% Fort + Très fort") +
+  theme_minimal()
+ 
+#Figure 2 : Likert
+dist_df <- long %>%
+  count(facteur, reponse) %>%
+  group_by(facteur) %>%
+  mutate(pct = 100 * n / sum(n)) %>%
+  ungroup()
+
+facteur_levels <- stats %>% pull(facteur)
+ 
+dist_wide <- dist_df %>%
+  mutate(facteur=factor(facteur, levels=facteur_levels),
+         reponse=factor(reponse, levels=likert_levels, ordered=TRUE)) %>%
+  select(facteur, reponse, pct) %>%
+  pivot_wider(names_from=reponse, values_from=pct, values_fill=0)
+ 
+plot_df <- dist_wide %>%
+  rowwise() %>%
+  do({
+    f <- .$facteur; tp <- .$`Très peu`; p <- .$Peu; m <- .$Modérément; fo <- .$Fort; tf <- .$`Très fort`
+    bind_rows(
+      tibble(facteur=f, fill_key=c("Modérément","Peu","Très peu"),
+             xmin=-(c(m/2, p, tp) + c(0, m/2, m/2+p)),
+             xmax=-c(0, m/2, m/2+p)),
+      tibble(facteur=f, fill_key=c("Modérément","Fort","Très fort"),
+             xmin=c(0, m/2, m/2+fo),
+             xmax=c(m/2, m/2+fo, m/2+fo+tf))
+    )
+  }) %>% ungroup() %>%
+  mutate(
+    facteur_lab = recode(as.character(facteur), !!!labels_facteur),
+    facteur_lab = factor(facteur_lab, levels = unname(labels_facteur[facteur_levels])),
+    fill_key = factor(fill_key, levels=likert_levels),
+    y = as.numeric(facteur_lab), ymin=y-0.35, ymax=y+0.35
+  )
+ 
+ggplot(plot_df) +
+  geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=fill_key)) +
+  geom_vline(xintercept=0, linewidth=0.4) +
+  scale_y_continuous(breaks=seq_along(levels(plot_df$facteur_lab)),
+                     labels=levels(plot_df$facteur_lab)) +
+  scale_x_continuous(limits=c(-100,100), breaks=c(-100,0,100),
+                     labels=function(x) paste0(abs(x), "%")) +
+  scale_fill_manual(values=likert_cols) +
+  labs(title="Importance des facteurs dans le choix de ne pas faire d'échange", x=NULL, y=NULL, fill=NULL) +
+  coord_cartesian(clip="off") +
+  theme_minimal() +
+  theme(panel.grid.major.y = element_blank())
+ 
+```
+
+Statistiques des facteurs qui influencent le choix de destination
+
+```{r}
+#stats
+dist_imp <- long_imp %>%
+  count(importance, reponse) %>%
+  group_by(importance) %>%
+  mutate(pct = 100*n/sum(n)) %>%
+  ungroup()
+
+stats_imp <- long_imp %>%
+  mutate(score = as.integer(reponse)) %>%
+  group_by(importance) %>%
+  summarise(
+    n = n(),
+    top2 = mean(score >= 4) * 100,
+    bottom2 = mean(score <= 2) * 100,
+    net = top2 - bottom2,
+    mean_score = mean(score),
+    median_score = median(score),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(top2))
+ 
+stats_imp
+```
+
+Plots des facteurs de choix de destination
+
+```{r}
+#Figure 1 : Fort et très fort
+stats_imp_plot <- stats_imp %>%
+  mutate(importance_label = recode(importance, !!!labels_importance))
+ 
+ggplot(stats_imp_plot, aes(x = reorder(importance_label, top2), y = top2)) +
+  geom_col() +
+  coord_flip() +
+  geom_text(aes(label = sprintf("%.1f%%", top2)), hjust = -0.1, size = 3.5) +
+  scale_y_continuous(limits = c(0, 100), labels = percent_format(scale = 1)) +
+  labs(
+    title = "Influence des aspects sur le choix de destination (Fort + Très fort)",
+    x = NULL, y = "% Fort + Très fort"
+  ) +
+  theme_minimal()
+ 
+ 
+#Figure 2 : Likert
+imp_levels <- stats_imp %>% pull(importance)  # déjà trié desc(top2)
+ 
+dist_wide <- dist_imp %>%
+  mutate(
+    importance = factor(importance, levels = imp_levels),
+    reponse = factor(reponse, levels = likert_levels, ordered = TRUE)
+  ) %>%
+  select(importance, reponse, pct) %>%
+  pivot_wider(names_from = reponse, values_from = pct, values_fill = 0)
+ 
+plot_df <- dist_wide %>%
+  rowwise() %>%
+  do({
+    i  <- .$importance
+    tp <- .$`Très peu`; p <- .$Peu; m <- .$Modérément; fo <- .$Fort; tf <- .$`Très fort`
+    bind_rows(
+      tibble(importance=i, fill_key=c("Modérément","Peu","Très peu"),
+             xmin=-(c(m/2, p, tp) + c(0, m/2, m/2+p)),
+             xmax=-c(0, m/2, m/2+p)),
+      tibble(importance=i, fill_key=c("Modérément","Fort","Très fort"),
+             xmin=c(0, m/2, m/2+fo),
+             xmax=c(m/2, m/2+fo, m/2+fo+tf))
+    )
+  }) %>% ungroup() %>%
+  mutate(
+    importance_lab = recode(as.character(importance), !!!labels_importance),
+    importance_lab = factor(importance_lab, levels = unname(labels_importance[imp_levels])),
+    fill_key = factor(fill_key, levels = likert_levels),
+    y = as.numeric(importance_lab), ymin = y - 0.35, ymax = y + 0.35
+  )
+ 
+ggplot(plot_df) +
+  geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=fill_key)) +
+  geom_vline(xintercept=0, linewidth=0.4) +
+  scale_y_continuous(breaks = seq_along(levels(plot_df$importance_lab)),
+                     labels = levels(plot_df$importance_lab)) +
+  scale_x_continuous(limits=c(-100,100), breaks=c(-100,0,100),
+                     labels=function(x) paste0(abs(x), "%")) +
+  scale_fill_manual(values = likert_cols) +
+  labs(
+    title = "Importance des aspects dans le choix de destination Erasmus",
+    x = NULL, y = NULL, fill = NULL
+  ) +
+  coord_cartesian(clip="off") +
+  theme_minimal() +
+  theme(panel.grid.major.y = element_blank())
+```
