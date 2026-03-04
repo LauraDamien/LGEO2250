@@ -45,11 +45,18 @@ Fichier : data_raw/enquete_erasmus_raw.xlsx
 Description : Export original de Microsoft Forms (non modifié)
 
 ### Données traitées
-Fichier : data_processed/enquete_erasmus_clean.csv  
+Fichier : data_processed/enquete_erasmus_clean.csv   
 Format : CSV  
 Encodage : UTF-8  
 Séparateur : Virgule (,)  
-Valeurs manquantes : NA
+Valeurs manquantes : cellules vides
+
+Fichier : data_processed/enquete_erasmus_clean2.csv  
+Format : CSV  
+Encodage : UTF-8  
+Séparateur : Virgule (,)  
+Valeurs manquantes : cellules vides
+Fichier pour la classification des destinations 
 
 ### Scripts
 Langage : R  
@@ -75,6 +82,7 @@ Contenu : nom de variable, type, modalités, description
 - Suppression des réponses incomplètes
 - Recodage de « Peut-être » en variable binaire pour certaines analyses
 - Transformation des échelles de Likert en valeurs numériques (1 = Très peu → 5 = Très fort)
+- Classification des destinations 
 - Vérification des doublons
 - Nettoyage des réponses ouvertes
 
@@ -93,7 +101,7 @@ Logiciels compatibles :
 - Python
 - SPSS
 - Excel
-- QGIS
+- ArcGIS
 
 ---
 
